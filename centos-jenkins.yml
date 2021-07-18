@@ -1,0 +1,6 @@
+---
+- name: Playbook principal
+  hosts: all
+  become: true
+  roles:
+    - role: ansible-role-jenkins
