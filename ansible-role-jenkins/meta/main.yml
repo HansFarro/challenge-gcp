@@ -1,0 +1,9 @@
+galaxy_info:
+  author: Hans Farro Castillo
+  description: Este rol instala Jenkins en un contenedor de Docker y lo configura de acuerdo a los requerimientos
+  license: license (GPL-2.0-or-later, MIT, etc)
+  min_ansible_version: 2.9
+
+  galaxy_tags: []
+
+dependencies: []

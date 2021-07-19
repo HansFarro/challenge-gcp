@@ -1,0 +1,39 @@
+---
+- name: Agregar repositorio para Docker
+  yum_repository:
+    description: repo para docker
+    name: docker-ce
+    baseurl: "{{ docker_baseurl }}"
+    gpgcheck: no
+
+- name: Instalar Docker
+  package:
+    name: "{{ docker_packages }}"
+    state: present
+
+- name: Iniciar servicio Docker
+  service:
+    name: docker
+    enabled: yes
+    state: started
+
+- name: Instalar Docker SDK para python
+  pip:
+    name: docker
+
+- name: Pull a imagen de Jenkins en Docker Hub
+  docker_image:
+    name: "{{ jenkins_image }}"
+    source: pull
+
+- name: Contenedor basado en la imagen de Jenkins
+  docker_container:
+    name: "{{ container_name }}"
+    image: "{{ jenkins_image }}"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    ports:
+      - "8080:8080"
+      - "5000:5000"
+    state: started
+    detach: yes

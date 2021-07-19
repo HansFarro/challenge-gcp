@@ -1,0 +1,4 @@
+---
+docker_baseurl: https://download.docker.com/linux/centos/8/x86_64/stable/
+docker_packages: ['docker-ce','docker-ce-cli','containerd.io']
+jenkins_image: jenkins/jenkins

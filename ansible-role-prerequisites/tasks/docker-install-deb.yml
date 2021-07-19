@@ -1,0 +1,27 @@
+---
+- name: Instalar dependencias
+  apt:
+    name: "{{ packages_docker }}"
+    state: present
+    update_cache: yes
+  
+- name: Añadir GPG para repositorio de Docker
+  apt_key:
+    url: "{{ key_gpg_terraform }}"
+    state: present
+
+- name: Agregar repositorio de Docker 
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+    state: present
+
+- name: Instalar Docker
+  package:
+    name: "{{ docker_packages }}"
+    state: present
+
+- name: Iniciar servicio Docker
+  service:
+    name: docker
+    enabled: yes
+    state: started

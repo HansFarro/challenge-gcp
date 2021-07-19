@@ -1,0 +1,15 @@
+---
+- name: Jenkins password
+  community.docker.docker_container_exec:
+    container: "{{ container_name }}"
+    command: cat /var/jenkins_home/secrets/initialAdminPassword
+  register: result
+
+- name: Instalar plugin de pipeline
+  jenkins_plugin:
+    name: "{{ standard_pipeline }}"
+    state: present
+    url_username: "{{ jenkins_username }}"
+    url_password: "{{ result.stdout }}"
+    url: http://localhost:8080
+    jenkins_home: /var/jenkins_home

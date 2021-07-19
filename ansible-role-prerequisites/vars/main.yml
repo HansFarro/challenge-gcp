@@ -1,0 +1,4 @@
+---
+key_gpg_docker: https://download.docker.com/linux/ubuntu/gpg
+key_gpg_terraform: https://apt.releases.hashicorp.com/gpg
+packages_docker: ["apt-transport-https","ca-certificates","curl","software-properties-common","gnupg-agent","gnupg2"]

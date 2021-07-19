@@ -1,0 +1,6 @@
+---
+- name: Descargar Docker e instalar Jenkins
+  include_tasks: docker-install.yml
+
+- name: Jenkins
+  include_tasks: jenkins-install-create.yml

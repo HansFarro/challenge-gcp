@@ -1,0 +1,15 @@
+---
+- name: Playbook prerequisites
+  hosts: all
+  become: true
+  gather_facts: no
+  roles:
+    - role: ansible-role-prerequisites
+  collections:
+    - name: community.general
+      version: 3.3.0
+      source: https://galaxy.ansible.com
+    
+    - name: community.docker
+      version: 1.8.0
+      source: https://galaxy.ansible.com

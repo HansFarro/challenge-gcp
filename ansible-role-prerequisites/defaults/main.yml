@@ -1,0 +1,4 @@
+---
+packages_mandatory: ["jq","ansible","snapd"]
+snap_packages: ["google-cloud-sdk","helm","kubectl"]
+docker_packages: ['docker-ce','docker-ce-cli','containerd.io']

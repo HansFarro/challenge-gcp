@@ -1,0 +1,15 @@
+---
+- name: Añadir GPG para repositorio de Terraform
+  apt_key:
+    url: "{{ key_gpg_terraform }}"
+    state: present
+
+- name: Agregar repositorio de Terraform 
+  apt_repository:
+    repo: deb [arch=amd64] https://apt.releases.hashicorp.com focal main
+    state: present
+
+- name: Instalar Terraform
+  package:
+    name: terraform
+    state: present

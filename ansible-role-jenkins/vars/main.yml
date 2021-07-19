@@ -1,0 +1,4 @@
+---
+container_name: my-container
+jenkins_username: admin
+standard_pipeline: build-pipeline-plugin

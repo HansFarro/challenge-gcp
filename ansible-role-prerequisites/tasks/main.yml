@@ -1,0 +1,25 @@
+---
+- name: Actualizar update cache
+  apt: 
+    update_cache : yes
+    cache_valid_time : 3600
+
+- name: Upgrade paquetes apt
+  apt: 
+    upgrade: dist
+
+- name: Instalar paquetes necesarios
+  package:
+    name: "{{ packages_mandatory }}"
+    state: present
+
+- name: Instalar Google Cloud SDK , Kubectl y Helm por Snap
+  snap:
+    name: "{{ snap_packages }}"
+    classic: yes
+
+- name: Instalar e inicar Docker
+  include_tasks: docker-install-deb.yml
+
+- name: Instalar Terraform
+  include_tasks: terraform-install-deb.yml
